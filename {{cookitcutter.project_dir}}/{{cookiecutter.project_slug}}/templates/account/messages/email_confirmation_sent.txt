@@ -1,0 +1,1 @@
+{% comment %}Leave this file blank to not show message after logged in{% endcomment %}
