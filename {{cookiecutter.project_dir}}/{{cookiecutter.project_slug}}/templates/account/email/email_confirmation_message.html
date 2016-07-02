@@ -1,4 +1,4 @@
-{% extends 'base_email.html' %}
+{% raw %}{% extends 'base_email.html' %}
 {% load account %}
 
 {% user_display user as user_display %}
@@ -10,3 +10,4 @@
 
   To confirm this is correct, go to {{ activate_url }}
 {% endblock %}
+{% endraw %}

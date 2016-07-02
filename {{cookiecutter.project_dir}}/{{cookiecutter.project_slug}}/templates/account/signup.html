@@ -1,4 +1,4 @@
-{% extends "account/base_account.html" %}
+{% raw %}{% extends "account/base_account.html" %}
 
 {% load socialaccount bootstrap3 %}
 
@@ -62,3 +62,4 @@ $('#{{ form.email.auto_id }}').on('blur', function() {
 $('#{{ form.password1.auto_id }}').hideShowPassword(false, true);
 </script>
 {% endblock %}
+{% endraw %}
