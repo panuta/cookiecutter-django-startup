@@ -3,7 +3,7 @@
 
 {% block content %}
   <div class="container-fluid">
-    <h1>Welcome to {{cookiecutter.project_name}}</h1>
+    <h1>Welcome to {% endraw %}{{cookiecutter.project_name}}{% raw %}</h1>
 
     <div>
       {% if not request.user.is_authenticated %}
