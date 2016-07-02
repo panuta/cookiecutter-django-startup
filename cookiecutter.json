@@ -6,8 +6,5 @@
     "admin_email": "support@opendream.co.th",
     "domain_name": "example.com",
     "timezone": "UTC",
-    "language_code": "en-us",
-    "_copy_without_render": [
-        "*static/libs"
-    ]
+    "language_code": "en-us"
 }
