@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     '{{cookiecutter.project_slug}}.common',
     '{{cookiecutter.project_slug}}.users',  # custom users app
+    '{{cookiecutter.project_slug}}.pages',
 
     # Your stuff: custom apps go here
 
