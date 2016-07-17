@@ -47,7 +47,7 @@ class User(AbstractUser):
         return self.display_name
 
     def get_absolute_url(self):
-        return reverse("account:profile")
+        return reverse('useraccount:profile')
 
     @property
     def slug(self):

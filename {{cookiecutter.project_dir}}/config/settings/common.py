@@ -53,7 +53,7 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     '{{cookiecutter.project_slug}}.common',
-    '{{cookiecutter.project_slug}}.account',  # custom users app
+    '{{cookiecutter.project_slug}}.useraccount',  # custom users app
     '{{cookiecutter.project_slug}}.pages',
 
     # Your stuff: custom apps go here
@@ -200,7 +200,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-AUTH_USER_MODEL = 'account.User'
+AUTH_USER_MODEL = 'useraccount.User'
 LOGIN_REDIRECT_URL = 'pages:homepage'
 LOGIN_URL = 'account_login'
 
@@ -209,11 +209,11 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
 ACCOUNT_SESSION_REMEMBER = True
-ACCOUNT_USER_DISPLAY = '{{cookiecutter.project_slug}}.account.models.user_display_name'
+ACCOUNT_USER_DISPLAY = '{{cookiecutter.project_slug}}.useraccount.models.user_display_name'
 
 ACCOUNT_FORMS = {
-    'signup': '{{cookiecutter.project_slug}}.account.forms.EmailUserSignupForm',
-    'reset_password': '{{cookiecutter.project_slug}}.account.forms.ResetPasswordForm',
+    'signup': '{{cookiecutter.project_slug}}.useraccount.forms.EmailUserSignupForm',
+    'reset_password': '{{cookiecutter.project_slug}}.useraccount.forms.ResetPasswordForm',
 }
 
 # Email verification
@@ -229,10 +229,10 @@ ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = False
 # Social account
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_AUTO_SIGNUP = False
-SOCIALACCOUNT_ADAPTER = '{{cookiecutter.project_slug}}.account.adapter.SocialAccountAdapter'
+SOCIALACCOUNT_ADAPTER = '{{cookiecutter.project_slug}}.useraccount.adapter.SocialAccountAdapter'
 
 SOCIALACCOUNT_FORMS = {
-    'signup': '{{cookiecutter.project_slug}}.account.forms.SocialUserSignupForm',
+    'signup': '{{cookiecutter.project_slug}}.useraccount.forms.SocialUserSignupForm',
 }
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -275,14 +275,14 @@ THUMBNAIL_ALIASES = {
 
 
     },
-    'users.User.profile_image': {
+    'useraccount.User.profile_image': {
         'square_120': {'size': (120, 120), 'crop': True},
 
     },
 }
 
 EMPTY_THUMBNAIL_ALIASES = {
-    'account.User.profile_image': {
+    'useraccount.User.profile_image': {
         'filepath': 'images/users/user_profile/empty.jpg',
     },
 }

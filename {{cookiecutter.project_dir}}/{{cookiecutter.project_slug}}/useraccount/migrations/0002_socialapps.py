@@ -27,7 +27,7 @@ def update_site_backward(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account', '0001_initial'),
+        ('useraccount', '0001_initial'),
         ('sites', '0002_set_site_domain_and_name'),
     ]
 
