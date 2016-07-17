@@ -17,7 +17,7 @@ from django.core.files import File
 from django.conf import settings
 
 from {{cookiecutter.project_slug}}.common.utils import split_filepath
-from {{cookiecutter.project_slug}}.users.models import get_user_profile_image_relpath, get_temp_user_profile_image_relpath, \
+from {{cookiecutter.project_slug}}.useraccount.models import get_user_profile_image_relpath, get_temp_user_profile_image_relpath, \
     get_temp_user_profile_image_filename
 
 
