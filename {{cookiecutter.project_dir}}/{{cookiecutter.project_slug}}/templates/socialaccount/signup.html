@@ -39,8 +39,8 @@
 {% block javascript %}
 <script>
   var uploader_params = {
-    upload_url: '{% url 'users:upload_temp_profile_image' %}',
-    delete_url: '{% url 'users:delete_temp_profile_image' %}',
+    upload_url: '{% url 'useraccount:upload_temp_profile_image' %}',
+    delete_url: '{% url 'useraccount:delete_temp_profile_image' %}',
     max_file_size_in_mb: {{ UPLOAD_SETTINGS.user_profile.max_size_in_mb }},
     max_file_size: {{ UPLOAD_SETTINGS.user_profile.max_size_in_bytes }},
     accepted_file: '{{ UPLOAD_SETTINGS.user_profile.accepted_file }}'

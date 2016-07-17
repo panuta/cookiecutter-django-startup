@@ -9,7 +9,7 @@
     <h1>{{ user.display_name }} - Update account</h1>
 
     <h2>Change email</h2>
-    <form method="post" action="{% url 'users:update_account' %}">
+    <form method="post" action="{% url 'useraccount:update_account' %}">
       {% csrf_token %}
 
       {% bootstrap_field email_form.email %}
@@ -29,7 +29,7 @@
     </form>
 
     <h2>Change password</h2>
-    <form method="post" action="{% url 'users:update_account' %}">
+    <form method="post" action="{% url 'useraccount:update_account' %}">
       {% csrf_token %}
 
       {% bootstrap_field password_form.oldpassword %}

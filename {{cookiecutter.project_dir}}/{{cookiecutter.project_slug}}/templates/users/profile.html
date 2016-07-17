@@ -9,8 +9,8 @@
 
     {% if request.user == thisuser %}
       <ul>
-        <li><a href="{% url 'users:update_profile' %}">Update profile</a></li>
-        <li><a href="{% url 'users:update_account' %}">Update account</a></li>
+        <li><a href="{% url 'useraccount:update_profile' %}">Update profile</a></li>
+        <li><a href="{% url 'useraccount:update_account' %}">Update account</a></li>
       </ul>
     {% endif %}
   </div>
