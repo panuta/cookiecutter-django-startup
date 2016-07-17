@@ -30,7 +30,7 @@ def public_profile(request, user_id, user_slug=''):
     user = get_object_or_404(User, id=user_id)
 
     if user.slug != user_slug:
-        return redirect('users:public_profile_with_slug', user_id, user.slug)
+        return redirect('account:public_profile_with_slug', user_id, user.slug)
 
     return render(request, 'users/profile.html', {'thisuser': user})
 
@@ -45,7 +45,7 @@ def update_profile(request):
             user.display_name = form.cleaned_data['display_name']
             user.save()
 
-            return redirect('users:update_profile')
+            return redirect('account:update_profile')
 
     else:
         form = UpdateProfileForm(initial={'display_name': user.display_name})
@@ -89,7 +89,7 @@ def update_account(request):
                 logout_on_password_change(request, password_form.user)
 
                 messages.success(request, _('Password is changed'))
-                return redirect('users:update_account')
+                return redirect('account:update_account')
 
         else:
             password_form = ChangePasswordForm(request.user)
@@ -177,7 +177,7 @@ class UserConfirmEmailView(ConfirmEmailView):
             EmailAddress.objects.filter(user=user).exclude(primary=True).delete()
 
             messages.success(self.request, u'Email is changed')
-            return redirect('users:update_account')
+            return redirect('account:update_account')
 
         return redirect(settings.LOGIN_REDIRECT_URL)
 

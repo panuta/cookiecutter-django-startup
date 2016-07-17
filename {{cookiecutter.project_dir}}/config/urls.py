@@ -14,8 +14,8 @@ urlpatterns = [
     url(settings.ADMIN_URL, include(admin.site.urls)),
 
     # Users
-    url(r'^users/', include('{{cookiecutter.project_slug}}.users.urls', namespace='users')),
-    url(r'^accounts/', include('{{cookiecutter.project_slug}}.users.urls_allauth')),
+    url(r'^users/', include('{{cookiecutter.project_slug}}.account.urls', namespace='users')),
+    url(r'^accounts/', include('{{cookiecutter.project_slug}}.account.urls_allauth')),
 
     # Pages
     url(r'', include('{{cookiecutter.project_slug}}.pages.urls', namespace='pages')),

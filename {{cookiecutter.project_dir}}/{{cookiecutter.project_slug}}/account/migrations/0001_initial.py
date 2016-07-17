@@ -6,7 +6,7 @@ import django.contrib.auth.models
 import django.core.validators
 from django.db import migrations, models
 import django.utils.timezone
-import {{cookiecutter.project_slug}}.users.models
+import {{cookiecutter.project_slug}}.account.models
 import easy_thumbnails.fields
 
 
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
-                ('profile_image', easy_thumbnails.fields.ThumbnailerImageField(blank=True, null=True, upload_to={{cookiecutter.project_slug}}.users.models.get_user_profile_image_relpath)),
+                ('profile_image', easy_thumbnails.fields.ThumbnailerImageField(blank=True, null=True, upload_to={{cookiecutter.project_slug}}.account.models.get_user_profile_image_relpath)),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.Group', verbose_name='groups')),
                 ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.Permission', verbose_name='user permissions')),
             ],

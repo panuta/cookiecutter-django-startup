@@ -1,4 +1,4 @@
-from {{cookiecutter.project_slug}}.users.models import User
+from {{cookiecutter.project_slug}}.account.models import User
 
 from allauth.account.models import EmailAddress
 from allauth.account.adapter import get_adapter as get_account_adapter

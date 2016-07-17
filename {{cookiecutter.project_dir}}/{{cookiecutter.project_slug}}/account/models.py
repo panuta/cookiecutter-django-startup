@@ -44,10 +44,10 @@ class User(AbstractUser):
     display_name = models.CharField(max_length=150)
 
     def __unicode__(self):
-        return self.get_full_name()
+        return self.display_name
 
     def get_absolute_url(self):
-        return reverse("users:profile")
+        return reverse("account:profile")
 
     @property
     def slug(self):
