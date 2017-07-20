@@ -1,5 +1,0 @@
-# Production dependencies
--r _base.txt
-
-# Mailgun Support
-django-mailgun==0.8.0

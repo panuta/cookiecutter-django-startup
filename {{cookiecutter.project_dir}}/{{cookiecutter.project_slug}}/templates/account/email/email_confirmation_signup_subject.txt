@@ -1,1 +1,0 @@
-Welcome to {{cookiecutter.project_name}} - Please Confirm Your E-mail Address

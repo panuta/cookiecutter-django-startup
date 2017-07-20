@@ -1,0 +1,7 @@
+# Development dependencies
+-r _base.txt
+
+django-debug-toolbar
+django-sass-processor
+
+Werkzeug  # Used to run django-extensions runserver_plus

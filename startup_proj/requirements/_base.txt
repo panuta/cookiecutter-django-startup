@@ -1,0 +1,39 @@
+# ----- Required ----- #
+
+Django
+django-environ
+
+# Accounts
+django-allauth
+
+# Database
+psycopg2
+django-model-utils
+
+# Static
+django-compressor
+
+# ----- Nice To Have ----- #
+
+# Utils
+requests
+shortuuid
+python-dateutil
+
+# Task Management
+celery
+kombu
+
+# Model
+django-autoslug
+unicode-slugify
+
+# Form
+django-crispy-forms
+
+# Redis
+django-redis
+redis
+
+# Shell
+django-extensions

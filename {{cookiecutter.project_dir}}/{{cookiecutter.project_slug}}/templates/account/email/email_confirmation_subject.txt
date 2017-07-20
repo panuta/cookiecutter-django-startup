@@ -1,1 +1,0 @@
-{% raw %}Please Confirm Your E-mail Address{% endraw %}

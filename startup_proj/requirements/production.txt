@@ -1,0 +1,8 @@
+# Production dependencies
+-r _base.txt
+
+# Mailgun Support
+# django-mailgun
+
+# Opbeat
+opbeat
