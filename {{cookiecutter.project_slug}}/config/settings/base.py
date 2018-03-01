@@ -49,7 +49,8 @@ THIRD_PARTY_APPS = (
     # 'allauth.socialaccount.providers.facebook',
     #
     # 'bootstrap3',
-    # 'compressor',
+    'compressor',
+    'sass_processor',
     # 'crispy_forms',
     # 'easy_thumbnails',
 )
@@ -163,6 +164,8 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+    'sass_processor.finders.CssFinder',
 )
 
 

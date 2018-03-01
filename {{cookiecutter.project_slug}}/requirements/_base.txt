@@ -35,7 +35,9 @@ django-environ
 
 
 # Static
-django_compressor
+libsass
+django-compressor
+django-sass-processor
 
 
 # Time

@@ -1,22 +1,21 @@
 {% raw %}{% extends "base.html" %}
-{% load common %}
 
 {% block content %}
   <div class="container-fluid">
     <h1>Welcome to {% endraw %}{{cookiecutter.project_name}}{% raw %}</h1>
 
-    <div>
-      {% if not request.user.is_authenticated %}
-        <p>User is not authenticated</p>
-        <p><a href="{% url 'account_login' %}">Login</a> | <a href="{% url 'account_signup' %}">Sign up</a></p>
-      {% else %}
-        <p>Logged in as : <a
-            href="{% url 'useraccount:public_profile_with_slug' request.user.id request.user.slug %}">{{ request.user.display_name }}</a>
-          &lt;{{ request.user.email }}&gt; | <a href="{% url 'useraccount:update_profile' %}">Update profile</a> | <a href="{% url 'useraccount:update_account' %}">Update account</a> | <a
-              href="{% url 'account_logout' %}">Logout</a></p>
-        <p><img src="{{ request.user.profile_image|thumbnail:'square_120' }}"/></p>
-      {% endif %}
-    </div>
+{#    <div>#}
+{#      {% if not request.user.is_authenticated %}#}
+{#        <p>User is not authenticated</p>#}
+{#        <p><a href="{% url 'account_login' %}">Login</a> | <a href="{% url 'account_signup' %}">Sign up</a></p>#}
+{#      {% else %}#}
+{#        <p>Logged in as : <a#}
+{#            href="{% url 'useraccount:public_profile_with_slug' request.user.id request.user.slug %}">{{ request.user.display_name }}</a>#}
+{#          &lt;{{ request.user.email }}&gt; | <a href="{% url 'useraccount:update_profile' %}">Update profile</a> | <a href="{% url 'useraccount:update_account' %}">Update account</a> | <a#}
+{#              href="{% url 'account_logout' %}">Logout</a></p>#}
+{#        <p><img src="{{ request.user.profile_image|thumbnail:'square_120' }}"/></p>#}
+{#      {% endif %}#}
+{#    </div>#}
   </div>
 {% endblock %}
 {% endraw %}
