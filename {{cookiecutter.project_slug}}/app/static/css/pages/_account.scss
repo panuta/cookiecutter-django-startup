@@ -1,0 +1,29 @@
+.page-account {
+  h1 {
+    color: #222;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    margin: 2rem 0 0.6rem;
+  }
+
+  h2 {
+    color: #222;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .form-account {
+    margin-top: 1rem;
+
+    .form-actions {
+      margin-top: 1rem;
+
+      .actions-switch {
+        color: #555;
+        font-size: 0.9rem;
+        margin-top: 0.6rem;
+      }
+    }
+  }
+}

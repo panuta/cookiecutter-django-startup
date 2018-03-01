@@ -10,9 +10,9 @@ urlpatterns = [
     # Django Admin
     path('admin/', admin.site.urls),
 
-    # Users
-    # url(r'^users/', include('{{cookiecutter.project_slug}}.useraccount.urls', namespace='useraccount')),
-    # url(r'^accounts/', include('{{cookiecutter.project_slug}}.useraccount.urls_allauth')),
+    # User Account
+    path('accounts/', include('app.accounts.urls')),
+    path('users/', include('app.users.urls', namespace='users')),
 
     # Pages
     path('', include('app.pages.urls', namespace='pages')),

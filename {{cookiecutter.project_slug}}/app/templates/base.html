@@ -32,7 +32,7 @@
 </head>
 <body class="{% block body_css_class %}{% endblock %}">
   <nav class="navbar navbar-expand-md navbar-dark">
-    <a class="navbar-brand" href="{% url 'pages:homepage' %}">Django Startup</a>
+    <a class="navbar-brand" href="{% url 'pages:homepage' %}">{% endraw %}{{cookiecutter.project_name}}{% raw %}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -58,10 +58,13 @@
         </li>
       </ul>
       <div class="nav-account ml-auto">
-        <a href="#" class="login">Login</a>
-        <a href="#" class="signup">Signup</a>
-{#        <span class="username">Username</span>#}
-{#        <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i></a>#}
+        {% if not user.is_authenticated %}
+          <a href="{% url 'account_login' %}" class="login">Login</a>
+          <a href="{% url 'account_signup' %}" class="signup">Signup</a>
+        {% else %}
+          <span class="username">Username</span>
+          <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+        {% endif %}
       </div>
     </div>
   </nav>
@@ -83,4 +86,5 @@
     {% endblock javascript %}
   {% endcompress %}
 </body>
-</html>{% endraw %}
+</html>
+{% endraw %}

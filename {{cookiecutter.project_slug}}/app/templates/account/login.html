@@ -1,6 +1,5 @@
 {% raw %}{% extends "account/base_account.html" %}
-
-{% load socialaccount bootstrap3 %}
+{% load socialaccount bootstrap4 %}
 
 {% block account_title %}Login{% endblock %}
 {% block account_css_class %}page-account-login{% endblock %}
@@ -29,16 +28,20 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
 
-    {% bootstrap_field form.login %}
-    {% bootstrap_field form.password %}
+    <div class="row">
+      <div class="col-md-6">
+        {% bootstrap_field form.login %}
+        {% bootstrap_field form.password %}
+      </div>
+    </div>
 
     {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
     {% endif %}
 
-    <div>
-      <div><button class="btn btn-primary" type="submit">Login</button></div>
-      <div><a class="link-btn" href="{% url 'account_reset_password' %}">Forgot Password?</a> | <a class="link-btn" href="{{ signup_url }}">Sign up</a></div>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Login</button>
+      <div class="actions-switch"><a class="link-btn" href="{% url 'account_reset_password' %}">Forgot Password?</a> | <a class="link-btn" href="{{ signup_url }}">Sign up</a></div>
     </div>
   </form>
 {% endblock %}

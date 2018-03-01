@@ -39,27 +39,26 @@ DJANGO_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
 )
 
 THIRD_PARTY_APPS = (
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     # 'allauth.socialaccount.providers.facebook',
-    #
-    # 'bootstrap3',
+
+    'bootstrap4',
     'compressor',
     'sass_processor',
-    # 'crispy_forms',
-    # 'easy_thumbnails',
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    # '{{cookiecutter.project_slug}}.useraccount',  # custom users app
+    'app.accounts',
     'app.pages',
-
+    'app.users',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -76,6 +75,13 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+
+# MIGRATIONS CONFIGURATION
+# ------------------------------------------------------------------------------
+MIGRATION_MODULES = {
+    'sites': 'app.contrib.sites.migrations'
+}
 
 
 # DEBUG
@@ -116,6 +122,8 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 # ------------------------------------------------------------------------------
 TIME_ZONE = '{{ cookiecutter.timezone }}'
 LANGUAGE_CODE = '{{cookiecutter.language_code}}'
+
+SITE_ID = 1
 
 USE_I18N = True
 USE_L10N = True
@@ -197,58 +205,59 @@ PASSWORD_HASHERS = [
 ]
 
 
-#
-#
-# # CRISPY FORM
-# # ------------------------------------------------------------------------------
-#
-# CRISPY_TEMPLATE_PACK = 'bootstrap3'
-#
-#
-# # UPLOAD
-# # ------------------------------------------------------------------------------
-#
-# UPLOAD_SETTINGS = {
-#     'user_profile': {
-#         'max_size_in_mb': 5,
-#         'max_size_in_bytes': 1024 * 1024 * 5,
-#         'accepted_file': 'image/*'
-#     }
-# }
-#
-#
-# # EASY THUMBNAILS
-# # ------------------------------------------------------------------------------
-#
-# THUMBNAIL_SAVE_ORIGINAL = {
-#     'user_profile': {'size': (1024, 1024)}
-# }
-#
-# THUMBNAIL_ALIASES = {
-#     '': {
-#         'user_profile_uploader_thumbnail': {'size': (120, 120), 'crop': True},
-#
-#
-#     },
-#     'useraccount.User.profile_image': {
-#         'square_120': {'size': (120, 120), 'crop': True},
-#
-#     },
-# }
-#
-# EMPTY_THUMBNAIL_ALIASES = {
-#     'useraccount.User.profile_image': {
-#         'filepath': 'images/users/user_profile/empty.jpg',
-#     },
-# }
-#
-# # DJANGO COMPRESSOR
-# # ------------------------------------------------------------------------------
-#
-# COMPRESS_OFFLINE = True
-#
-#
-# # Your common stuff: Below this line define 3rd party library settings
-#
-# TEMP_PROFILE_IMAGE_DIR = 'users/temp/avatar'
-# TEMP_PROFILE_IMAGE_FILE_TYPE = 'jpg'
+# AUTHENTICATION CONFIGURATION
+# ------------------------------------------------------------------------------
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_REDIRECT_URL = 'pages:homepage'
+LOGIN_URL = 'account_login'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_USER_DISPLAY = 'app.accounts.models.user_display_name'
+
+ACCOUNT_FORMS = {
+    'signup': 'app.accounts.forms.EmailUserSignupForm',
+    'reset_password': 'app.accounts.forms.ResetPasswordForm',
+}
+
+# Email verification
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = False
+
+# Social account
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_AUTO_SIGNUP = False
+SOCIALACCOUNT_ADAPTER = 'app.accounts.adapter.SocialAccountAdapter'
+
+SOCIALACCOUNT_FORMS = {
+    'signup': 'app.accounts.forms.SocialUserSignupForm',
+}
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email', 'public_profile'],
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL': True,
+    },
+}
+
+
+# BOOTSTRAP4
+# ------------------------------------------------------------------------------
+
+BOOTSTRAP4 = {
+    'set_placeholder': False,
+}
