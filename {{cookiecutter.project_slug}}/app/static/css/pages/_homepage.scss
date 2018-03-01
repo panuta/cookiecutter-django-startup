@@ -1,5 +1,7 @@
 .page-homepage {
   header {
+    margin-bottom: 3rem;
+
     h1 {
       color: #222;
       font-family: 'PT Sans', sans-serif;
@@ -14,14 +16,9 @@
       line-height: 1.95rem;
     }
 
-    ul {
-
-
-      li {
-        font-family: 'PT Serif', serif;
-        font-size: 1.1rem;
-        line-height: 1.95rem;
-      }
+    pre {
+      background-color: #eee;
+      padding: 0.7rem 1rem;
     }
   }
 
@@ -36,6 +33,4 @@
       }
     }
   }
-
-
 }
