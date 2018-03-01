@@ -1,17 +1,30 @@
-# -*- coding: utf-8 -*-
-from .common import *
+from .base import *
 
 DEBUG = True
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
-WEBSITE_DOMAIN = 'localhost:8000'
-
 ALLOWED_HOSTS = ['localhost', ]
 
-SECRET_KEY = 'THIS_IS_DUMMY_SECRET_KEY_FOR_DEVELOPMENT_ONLY'
+
+# WEBSITE
+# ------------------------------------------------------------------------------
+WEBSITE_DOMAIN = 'localhost:8000'
+WEBSITE_URL = 'http://' + WEBSITE_DOMAIN
 
 
-# Database settings
+# SECRET CONFIGURATION
+# ------------------------------------------------------------------------------
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='THIS_IS_DUMMY_SECRET_KEY')
+
+
+# EMAIL CONFIGURATION
+# ------------------------------------------------------------------------------
+EMAIL_HOST = 'localhost'
+EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
+                    default='django.core.mail.backends.console.EmailBackend')
+
+
+# DATABASE
 # ------------------------------------------------------------------------------
 
 DATABASES = {
@@ -26,14 +39,7 @@ DATABASES = {
 }
 
 
-# Mail settings
-# ------------------------------------------------------------------------------
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-# Caching
+# CACHING
 # ------------------------------------------------------------------------------
 CACHES = {
     'default': {
@@ -43,18 +49,27 @@ CACHES = {
 }
 
 
-# Django Debug Toolbar
+# django-debug-toolbar
 # ------------------------------------------------------------------------------
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
 INSTALLED_APPS += ('debug_toolbar', )
 
-INTERNAL_IPS = ('127.0.0.1', )
+INTERNAL_IPS = ['127.0.0.1', '10.0.2.2', ]
+
+import socket
+import os
+# tricks to have debug toolbar when developing with docker
+if os.environ.get('USE_DOCKER') == 'yes':
+    ip = socket.gethostbyname(socket.gethostname())
+    INTERNAL_IPS += [ip[:-1] + '1']
 
 DEBUG_TOOLBAR_CONFIG = {
     'DISABLE_PANELS': [
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
+    # 'SHOW_TOOLBAR_CALLBACK': lambda r: False,
 }
 
 
@@ -62,11 +77,11 @@ DEBUG_TOOLBAR_CONFIG = {
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-
-# Facebook App
-# ------------------------------------------------------------------------------
-FACEBOOK_APP_ID = '225585191119533'
-FACEBOOK_SECRET_KEY = '0be20b2acb2df9dd3d869834a429821b'
+#
+# # Facebook App
+# # ------------------------------------------------------------------------------
+# FACEBOOK_APP_ID = '225585191119533'
+# FACEBOOK_SECRET_KEY = '0be20b2acb2df9dd3d869834a429821b'
 
 
 # CUSTOM CONFIGURATION

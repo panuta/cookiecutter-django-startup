@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views import defaults as default_views
 
-from {{cookiecutter.project_slug}}.views import bad_request, server_error
+from app.views import bad_request, server_error
 
 urlpatterns = [
     # Django Admin
