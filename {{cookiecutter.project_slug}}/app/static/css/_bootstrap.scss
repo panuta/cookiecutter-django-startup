@@ -1,0 +1,64 @@
+@mixin buttonDefault {
+  i {
+    margin-right: 2px;
+  }
+
+  &, &:link, &:visited {
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0.4rem 1.8rem;
+    text-decoration: none;
+  }
+
+  &:hover, &:active {
+    text-decoration: none;
+  }
+}
+
+.btn-primary {
+  @include buttonDefault;
+
+  background-color: #058bbf;
+  border: 1px solid #0479a6;
+  box-shadow: 0 1px 0 #02435c;
+  color: #fff;
+
+  &:hover, &:active {
+    background-color: #04678d;
+    border: 1px solid #035574;
+    box-shadow: 0 1px 0 #011f2a;
+    color: #fff;
+  }
+}
+
+.btn-light {
+  @include buttonDefault;
+
+  background-color: #f7f7f7;
+  border: 1px solid #D9D9D9;
+  box-shadow: 0 1px 0 #aaa;
+  color: #444;
+
+  &:hover, &:active {
+    background-color: #dddddd;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 0 #999;
+    color: #000;
+  }
+}
+
+.btn-danger {
+  @include buttonDefault;
+
+  background-color: #bd3b0f;
+  border: 1px solid #8e2c0b;
+  box-shadow: 0 1px 0 #5e1d08;
+  color: #f7f7f7;
+
+  &:hover, &:active {
+    background-color: #8e2c0b;
+    border: 1px solid #5e1d08;
+    box-shadow: 0 1px 0 #2f0f04;
+    color: #f7f7f7;
+  }
+}

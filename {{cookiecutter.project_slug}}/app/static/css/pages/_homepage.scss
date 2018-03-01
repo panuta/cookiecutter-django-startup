@@ -1,0 +1,41 @@
+.page-homepage {
+  header {
+    h1 {
+      color: #222;
+      font-family: 'PT Sans', sans-serif;
+      font-weight: 700;
+      margin: 2rem 0 0.6rem;
+    }
+
+    p {
+      color: #333;
+      font-family: 'PT Serif', serif;
+      font-size: 1.2rem;
+      line-height: 1.95rem;
+    }
+
+    ul {
+
+
+      li {
+        font-family: 'PT Serif', serif;
+        font-size: 1.1rem;
+        line-height: 1.95rem;
+      }
+    }
+  }
+
+  .account {
+    p {
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      .btn {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+
+}

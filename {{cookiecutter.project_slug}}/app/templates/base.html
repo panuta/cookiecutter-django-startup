@@ -13,10 +13,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->
 
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700" rel="stylesheet">
+
   {% if debug %}
     <link href="{% static 'libs/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'libs/fontawesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
   {% else %}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   {% endif %}
 
   {% compress css %}
@@ -27,43 +31,53 @@
 
 </head>
 <body class="{% block body_css_class %}{% endblock %}">
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-              aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{% url 'pages:homepage' %}">{% endraw %}{{cookiecutter.project_name}}{% raw %}</a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'pages:homepage' %}">Home <span class="sr-only">(current)</span></a></li>
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a class="navbar-brand" href="#">Django Startup</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
       </ul>
+      <div class="nav-account ml-auto">
+        <span class="username">Username</span>
+        <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-{% block content %}{% endblock %}
+  {% if debug %}
+    <script src="{% static 'libs/jquery/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.js' %}"></script>
+  {% else %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  {% endif %}
 
-{% if debug %}
-  <script src="{% static 'libs/jquery/jquery-3.3.1.js' %}"></script>
-  <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.js' %}"></script>
-{% else %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-{% endif %}
-
-{% compress js %}
-  <script src="{% static 'js/csrf.js' %}"></script>
-  <script src="{% static 'js/scripts.js' %}"></script>
-
-  {% block javascript %}
-  {% endblock javascript %}
-{% endcompress %}
+  {% compress js %}
+    <script src="{% static 'js/csrf.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    {% block javascript %}
+    {% endblock javascript %}
+  {% endcompress %}
 </body>
 </html>
 {% endraw %}

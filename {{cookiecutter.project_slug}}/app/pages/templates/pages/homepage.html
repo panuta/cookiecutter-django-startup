@@ -1,8 +1,22 @@
-{% raw %}{% extends "base.html" %}
+{% extends "base.html" %}
+
+{% block body_css_class %}page-homepage{% endblock %}
 
 {% block content %}
   <div class="container-fluid">
-    <h1>Welcome to {% endraw %}{{cookiecutter.project_name}}{% raw %}</h1>
+    <header>
+      <h1>Welcome to Django Startup</h1>
+      <p>You can start using this boilerplate by creating a new app using Django's startapp command</p>
+      <pre>$ startapp [app_label] ./app/</pre>
+    </header>
+
+    <div class="account">
+      <hr/>
+      <p>You're currently not logged in.</p>
+      <div class="actions">
+        <a href="#" class="btn btn-light">Login</a> <a href="#" class="btn btn-primary">Sign up</a>
+      </div>
+    </div>
 
 {#    <div>#}
 {#      {% if not request.user.is_authenticated %}#}
@@ -18,4 +32,4 @@
 {#    </div>#}
   </div>
 {% endblock %}
-{% endraw %}
+

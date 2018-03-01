@@ -38,11 +38,3 @@ django-environ
 libsass
 django-compressor
 django-sass-processor
-
-
-# Time
-# pytz==2016.6.1
-
-
-# Payment
-# omise==0.3.0
