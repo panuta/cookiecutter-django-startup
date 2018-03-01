@@ -52,6 +52,17 @@
   .nav-account {
     height: 45px;
 
+    .login, .signup {
+      color: #f5f1f7;
+      font-size: 0.95rem;
+      margin-left: 0.7rem;
+      line-height: 45px;
+
+      &:last-child {
+        margin-right: 1.1rem;
+      }
+    }
+
     .username {
       color: #f5f1f7;
       font-size: 0.95rem;
