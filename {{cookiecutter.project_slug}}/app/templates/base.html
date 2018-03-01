@@ -64,6 +64,8 @@
     </div>
   </nav>
 
+  {% block body_content %}{% endblock %}
+
   {% if debug %}
     <script src="{% static 'libs/jquery/jquery-3.3.1.js' %}"></script>
     <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.js' %}"></script>
