@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import absolute_import, unicode_literals
-
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 from django import forms

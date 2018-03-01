@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals, absolute_import
-
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.core.urlresolvers import reverse
@@ -9,7 +6,7 @@ from django.db import models
 from easy_thumbnails.fields import ThumbnailerImageField
 from autoslug.utils import slugify
 
-from {{cookiecutter.project_slug}}.common.utils import split_filepath
+from app.common.utils import split_filepath
 
 
 def get_user_profile_image_relpath(instance, filename):

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 
 def social_user_display_name(sociallogin_user):
     if sociallogin_user.last_name:
