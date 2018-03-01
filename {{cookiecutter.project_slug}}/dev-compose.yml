@@ -7,5 +7,7 @@ services:
       dockerfile: ./compose/develop/django/Dockerfile
     volumes:
       - .:/app
+    environment:
+      - USE_DOCKER=yes
     ports:
       - "8000:8000"
