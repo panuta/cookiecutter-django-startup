@@ -3,7 +3,7 @@ from .base import *
 DEBUG = True
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
-ALLOWED_HOSTS = ['localhost', ]
+ALLOWED_HOSTS = ['*']
 
 
 # WEBSITE
@@ -24,21 +24,6 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
                     default='django.core.mail.backends.console.EmailBackend')
 
 
-# DATABASE
-# ------------------------------------------------------------------------------
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '{{cookiecutter.project_slug}}',
-        'USER': '{{cookiecutter.project_slug}}',
-        'PASSWORD': '{{cookiecutter.project_slug}}',
-        'HOST': '',
-        'PORT': '',
-    },
-}
-
-
 # CACHING
 # ------------------------------------------------------------------------------
 CACHES = {
@@ -52,7 +37,7 @@ CACHES = {
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 INSTALLED_APPS += ('debug_toolbar', )
 
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2', ]
