@@ -47,7 +47,7 @@ def update_profile(request):
     else:
         form = UpdateProfileForm(initial={'display_name': user.display_name})
 
-    return render(request, 'users/profile_update.html', {'form': form})
+    return render(request, 'users/edit_profile.html', {'form': form})
 
 
 @login_required
@@ -95,7 +95,7 @@ def update_account(request):
         email_form = ChangeEmailForm(request.user, initial={'email': request.user.email})
         password_form = ChangePasswordForm(request.user)
 
-    return render(request, 'users/account_update.html', {'email_form': email_form, 'password_form': password_form})
+    return render(request, 'users/change_password.html', {'email_form': email_form, 'password_form': password_form})
 
 
 @login_required

@@ -17,5 +17,5 @@ class User(AbstractUser):
         return reverse('useraccount:profile')
 
     @property
-    def change_email_request(self):
+    def latest_changing_email_request(self):
         return self.emailaddress_set.filter(verified=False).last()

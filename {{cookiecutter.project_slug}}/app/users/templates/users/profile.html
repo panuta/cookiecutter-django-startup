@@ -12,8 +12,8 @@
 
     {% if request.user == thisuser %}
       <ul>
-        <li><a href="{% url 'users:update_profile' %}">Edit profile</a></li>
-        <li><a href="{% url 'users:update_account' %}">Account settings</a></li>
+        <li><a href="{% url 'users:edit_profile' %}">Edit profile</a></li>
+        <li><a href="{% url 'users:change_password' %}">Change password</a></li>
       </ul>
     {% endif %}
   </div>

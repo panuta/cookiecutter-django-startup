@@ -12,31 +12,6 @@ from allauth.socialaccount.forms import SignupForm
 from .utils import social_user_display_name
 
 
-class UpdateProfileForm(forms.Form):
-    display_name = forms.CharField(label=_('Display name'), required=True)
-
-
-class ChangeEmailForm(forms.Form):
-    email = forms.EmailField(required=True)
-
-    def __init__(self, user, *args, **kwargs):
-        self.user = user
-        super(ChangeEmailForm, self).__init__(*args, **kwargs)
-
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-
-        if email == self.user.email:
-            raise forms.ValidationError(_('You have not change email'))
-
-        if EmailAddress.objects.filter(email=email).exclude(user=self.user).exists():
-            raise forms.ValidationError(_('Another user is already using this email'))
-
-        return email
-
-
-# Below is to override allauth forms
-
 class EmailUserSignupForm(BaseSignupForm):
     display_name = forms.CharField(
         label=_('Display name'),

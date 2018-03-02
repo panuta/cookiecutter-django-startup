@@ -8,13 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 from allauth.account.adapter import get_adapter
 from allauth.account.models import EmailAddress
 from allauth.account.views import ConfirmEmailView
-
 from allauth.socialaccount.views import SignupView
 
-# from .forms import UserUploadProfileForm, SocialUserSignupForm, UpdateProfileForm, ChangeEmailForm
-# # from .models import User
-# from .utils_image import get_temp_profile_image_file_details, save_temp_profile_image_from_file, \
-#     delete_temp_profile_image
 from app.accounts.forms import SocialUserSignupForm
 
 
@@ -62,7 +57,7 @@ class UserConfirmEmailView(ConfirmEmailView):
             EmailAddress.objects.filter(user=user).exclude(primary=True).delete()
 
             messages.success(self.request, _('Email is changed'))
-            return redirect('useraccount:update_account')
+            return redirect('users:edit_profile')
 
         return redirect(settings.LOGIN_REDIRECT_URL)
 

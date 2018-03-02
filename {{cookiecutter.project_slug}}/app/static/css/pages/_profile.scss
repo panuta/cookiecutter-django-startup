@@ -17,5 +17,29 @@
       font-size: 1.4rem;
     }
   }
+}
 
+.page-edit-profile {
+  .has_change_email_request {
+    background-color: #FFD;
+    border: 1px solid #d0d073;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1rem 0;
+
+    p {
+      margin-bottom: 0.8rem;
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      color: $link-color;
+      font-weight: bold;
+      padding: 0;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }
