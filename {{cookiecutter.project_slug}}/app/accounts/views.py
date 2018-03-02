@@ -1,22 +1,15 @@
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-# from django.core.urlresolvers import reverse
-from django.http import Http404, JsonResponse, HttpResponseForbidden, HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
+from django.http import Http404
+from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.decorators.http import require_POST
 from django.utils.translation import ugettext_lazy as _
 
 from allauth.account.adapter import get_adapter
 from allauth.account.models import EmailAddress
 from allauth.account.views import ConfirmEmailView
 
-from allauth.socialaccount.models import SocialLogin
 from allauth.socialaccount.views import SignupView
-
-from allauth.account.forms import ChangePasswordForm
-from allauth.account.utils import logout_on_password_change
 
 # from .forms import UserUploadProfileForm, SocialUserSignupForm, UpdateProfileForm, ChangeEmailForm
 # # from .models import User
@@ -28,7 +21,7 @@ from app.accounts.forms import SocialUserSignupForm
 class UserConfirmEmailView(ConfirmEmailView):
 
     def get_template_names(self):
-        return ['account/email_confirm.html']  # Used when link is invalid
+        return ['account/email_confirm.html']  # Only used when link is invalid
 
     def get(self, *args, **kwargs):
 
@@ -40,13 +33,14 @@ class UserConfirmEmailView(ConfirmEmailView):
 
         # If user has already confirmed
         if self.object.email_address.verified:
-            return render(self.request, 'account/email_confirmed.html', {'email': self.object.email_address.email})
+            return render(self.request, 'account/email_already_confirmed.html', {
+                'email': self.object.email_address.email})
 
         # If user is currently authenticated but open confirmation email of someone else,
         # ask authenticated user to logout first
-        if self.request.user.is_authenticated() and self.request.user != self.object.email_address.user:
+        if self.request.user.is_authenticated and self.request.user != self.object.email_address.user:
             activate_url = reverse('account_confirm_email', args=[self.object.key])
-            return redirect('%s?next=%s' % (reverse('account_logout'), activate_url))
+            return redirect('%s?flag=confirm_on_authenticated&next=%s' % (reverse('account_logout'), activate_url))
 
         # Confirm email on GET
         self.object.confirm(self.request)
@@ -62,12 +56,12 @@ class UserConfirmEmailView(ConfirmEmailView):
         email = self.object.email_address.email
         existing_emails = EmailAddress.objects.filter(user=user).exclude(email__iexact=email)
 
-        if existing_emails:  # Assume that if there's existing email, it means user just change email (not signup).
+        if existing_emails:  # Assume that if there's existing email, it means user just change email (not signing up).
 
             # Delete old emails
             EmailAddress.objects.filter(user=user).exclude(primary=True).delete()
 
-            messages.success(self.request, u'Email is changed')
+            messages.success(self.request, _('Email is changed'))
             return redirect('useraccount:update_account')
 
         return redirect(settings.LOGIN_REDIRECT_URL)

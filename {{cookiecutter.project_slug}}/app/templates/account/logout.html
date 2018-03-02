@@ -6,8 +6,13 @@
 {% block account_css_class %}page-account-logout{% endblock %}
 
 {% block account_content %}
-  <h1>Logout</h1>
-  <p>Are you sure to logout?</p>
+  {% if request.GET.flag == 'confirm_on_authenticated' %}
+    <h1>E-mail Address Verification</h1>
+    <p>You're currently logged in with different user. Please logout from this user first to confirm email.</p>
+  {% else %}
+    <h1>Logout</h1>
+    <p>Are you sure to logout?</p>
+  {% endif %}
 
   <form method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
