@@ -4,8 +4,8 @@ ENV PYTHONUNBUFFERED 1
 RUN apk add --no-cache \
         bash \
         build-base \
+        postgresql-dev \
         libffi-dev \
-        openssl-dev \
         libxml2-dev \
         libxslt-dev
 
