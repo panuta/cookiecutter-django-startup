@@ -8,5 +8,5 @@ urlpatterns = [
     path('update/profile/', view=views.edit_profile, name='edit_profile'),
     path('update/password/', view=views.change_password, name='change_password'),
 
-    path('<int:user_id>/', views.public_profile, {'user_slug': ''}, name='public_profile'),
+    path('<int:user_id>/', views.public_profile, name='profile'),
 ]

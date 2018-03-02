@@ -18,7 +18,7 @@
         </div>
       {% else %}
         <p>Logged in as :
-          <a href="{% url 'users:public_profile' user.id %}">{{ user.display_name }}</a>
+          <a href="{% url 'users:profile' user.id %}">{{ user.display_name }}</a>
           &lt;{{ user.email }}&gt; | <a href="{% url 'users:edit_profile' %}">Edit profile</a> | <a href="{% url 'users:change_password' %}">Change password</a> | <a href="{% url 'account_logout' %}">Logout</a>
         </p>
       {% endif %}
