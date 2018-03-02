@@ -16,6 +16,15 @@
   .form-account {
     margin-top: 1rem;
 
+    .errorlist {
+      padding: 0;
+
+      li {
+        color: $danger;
+        list-style: none;
+      }
+    }
+
     .form-actions {
       margin-top: 1rem;
 

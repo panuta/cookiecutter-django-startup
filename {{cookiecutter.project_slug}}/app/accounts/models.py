@@ -10,7 +10,7 @@ def user_display_name(user):
 class User(AbstractUser):
     display_name = models.CharField(max_length=150)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.display_name
 
     def get_absolute_url(self):

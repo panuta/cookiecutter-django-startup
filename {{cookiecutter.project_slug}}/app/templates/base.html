@@ -62,7 +62,7 @@
           <a href="{% url 'account_login' %}" class="login">Login</a>
           <a href="{% url 'account_signup' %}" class="signup">Signup</a>
         {% else %}
-          <span class="username">Username</span>
+          <span class="username">{{ user.display_name }}</span>
           <a href="{% url 'account_logout' %}" class="logout"><i class="fas fa-sign-out-alt"></i></a>
         {% endif %}
       </div>
