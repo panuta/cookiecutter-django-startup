@@ -1,16 +1,18 @@
 {% raw %}{% extends "base.html" %}
-{% load common %}
 
-{% block content %}
+{% block body_css_class %}page-profile{% endblock %}
+
+{% block body_content %}
   <div class="container-fluid">
-    <h1>User profile : {{ thisuser.display_name }}</h1>
-    <p>Email : {{ request.user.email }}</p>
-    <p><img src="{{ request.user.profile_image|thumbnail:'square_120' }}"/></p>
+    <header>
+      <h1>{{ thisuser.display_name }}</h1>
+      <div class="email">&lt;{{ request.user.email }}&gt;</div>
+    </header>
 
     {% if request.user == thisuser %}
       <ul>
-        <li><a href="{% url 'useraccount:update_profile' %}">Update profile</a></li>
-        <li><a href="{% url 'useraccount:update_account' %}">Update account</a></li>
+        <li><a href="{% url 'users:update_profile' %}">Edit profile</a></li>
+        <li><a href="{% url 'users:update_account' %}">Account settings</a></li>
       </ul>
     {% endif %}
   </div>

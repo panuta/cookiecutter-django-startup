@@ -1,35 +1,19 @@
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-# from django.core.urlresolvers import reverse
-from django.http import Http404, JsonResponse, HttpResponseForbidden, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.http import require_POST
 from django.utils.translation import ugettext_lazy as _
 
-from allauth.account.adapter import get_adapter
-from allauth.account.models import EmailAddress
-from allauth.account.views import ConfirmEmailView
-
-from allauth.socialaccount.models import SocialLogin
-from allauth.socialaccount.views import SignupView
-
 from allauth.account.forms import ChangePasswordForm
+from allauth.account.models import EmailAddress
 from allauth.account.utils import logout_on_password_change
 
-# from .forms import UserUploadProfileForm, SocialUserSignupForm, UpdateProfileForm, ChangeEmailForm
-# # from .models import User
-# from .utils_image import get_temp_profile_image_file_details, save_temp_profile_image_from_file, \
-#     delete_temp_profile_image
+from app.accounts.models import User
 
 
 def public_profile(request, user_id, user_slug=''):
     user = get_object_or_404(User, id=user_id)
-
-    if user.slug != user_slug:
-        return redirect('useraccount:public_profile_with_slug', user_id, user.slug)
-
-    return render(request, 'templates/users/profile.html', {'thisuser': user})
+    return render(request, 'users/profile.html', {'thisuser': user})
 
 
 @login_required
