@@ -1,56 +1,28 @@
 {% raw %}{% extends "base.html" %}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 
 {% block title %}{{ user.display_name }} - Update profile{% endblock %}
-{% block body_css_class %}page-users-profile-update{% endblock %}
+{% block body_css_class %}page-profile page-users-profile-update{% endblock %}
 
-{% block content %}
+{% block body_content %}
   <div class="container-fluid">
-    <h1>{{ user.display_name}} - Update profile</h1>
+    <header>
+      <h1>Edit profile</h1>
+    </header>
 
-    <div class="dz-profile-image">
-      <label class="control-label" for="id_profile_image">Profile image</label>
-      <div class="dropzone" id="user_profile_uploader">
-        <input class="hidden" name="file" type="file"/>
-        <input type="hidden" name="profile_image" id="id_profile_image">
+    <form method="post" action="{% url 'users:update_profile' %}">
+      {% csrf_token %}
 
-        <div class="dz-message">
-          <p><i class="fa fa-picture-o"></i>Change image</p>
+      <div class="row">
+        <div class="col-md-6">
+          {% bootstrap_field form.display_name %}
         </div>
       </div>
-      {% include 'account/snippets/dropzone_preview_template.html' %}
-    </div>
 
-    <form method="post" action="{% url 'useraccount:update_profile' %}">
-      {% csrf_token %}
-      {% bootstrap_field form.display_name %}
-      <button class="btn btn-submit" type="submit">Confirm</button>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Confirm</button>
+      </div>
     </form>
   </div>
-{% endblock %}
-
-{% block javascript %}
-<script>
-  var uploader_params = {
-    upload_url: '{% url 'useraccount:upload_profile_image' %}',
-    delete_url: '{% url 'useraccount:delete_profile_image' %}',
-    max_file_size_in_mb: {{ UPLOAD_SETTINGS.user_profile.max_size_in_mb }},
-    max_file_size: {{ UPLOAD_SETTINGS.user_profile.max_size_in_bytes }},
-    accepted_file: '{{ UPLOAD_SETTINGS.user_profile.accepted_file }}'
-  };
-
-  var existing_image;
-  {% if user.profile_image %}
-    existing_image = {
-      name: '{{ user.profile_image.name }}',
-      size: '{{ user.profile_image.size }}',
-      url: '{{ user.profile_image.user_profile_uploader_thumbnail.url }}'
-    };
-  {% endif %}
-
-  $(document).ready(function() {
-    user_profile_uploader('#user_profile_uploader', uploader_params, existing_image);
-  });
-</script>
 {% endblock %}
 {% endraw %}

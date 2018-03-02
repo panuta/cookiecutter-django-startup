@@ -8,10 +8,11 @@ from allauth.account.forms import ChangePasswordForm
 from allauth.account.models import EmailAddress
 from allauth.account.utils import logout_on_password_change
 
+from app.accounts.forms import UpdateProfileForm
 from app.accounts.models import User
 
 
-def public_profile(request, user_id, user_slug=''):
+def public_profile(request, user_id):
     user = get_object_or_404(User, id=user_id)
     return render(request, 'users/profile.html', {'thisuser': user})
 
@@ -26,12 +27,13 @@ def update_profile(request):
             user.display_name = form.cleaned_data['display_name']
             user.save()
 
-            return redirect('useraccount:update_profile')
+            messages.success(request, _('Profile is updated'))
+            return redirect('users:update_profile')
 
     else:
         form = UpdateProfileForm(initial={'display_name': user.display_name})
 
-    return render(request, 'templates/users/profile_update.html', {'form': form})
+    return render(request, 'users/profile_update.html', {'form': form})
 
 
 @login_required
