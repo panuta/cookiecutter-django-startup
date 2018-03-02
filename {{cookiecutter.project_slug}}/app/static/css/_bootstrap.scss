@@ -1,3 +1,6 @@
+// Buttons
+// ------------------------------------------------------------------------------
+
 @mixin buttonDefault {
   i {
     margin-right: 2px;
@@ -61,4 +64,47 @@
     box-shadow: 0 1px 0 #2f0f04;
     color: #f7f7f7;
   }
+}
+
+
+// Alerts
+// ------------------------------------------------------------------------------
+
+.alert {
+  border: none;
+  color: #fff;
+  margin-bottom: 1rem;
+  padding-left: 20px;
+
+  i {
+    font-size: 1.2rem;
+    padding-right: 7px;
+    vertical-align: -1px;
+  }
+
+  a {
+    color: #fff;
+    margin-left: 10px;
+    text-decoration: underline;
+  }
+}
+
+.alert-success {
+  background-color: #179864;
+}
+
+.alert-danger {
+  background-color: #DA3A3C;
+}
+
+.alert-warning {
+  background-color: #d96906;
+}
+
+.alert-info {
+  background-color: #666;
+}
+
+.alert-dark {
+  background-color: #111;
 }

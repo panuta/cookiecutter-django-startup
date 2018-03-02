@@ -2,7 +2,12 @@
 @import "../libs/bootstrap/scss/variables";
 @import "../libs/bootstrap/scss/mixins/breakpoints";
 
+@import "../libs/fontawesome/scss/variables";
+@import "../libs/fontawesome/scss/mixins";
+
 @import "bootstrap";
+
+@import "layout";
 
 @import "components/all";
 @import "pages/all";

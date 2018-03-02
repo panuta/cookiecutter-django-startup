@@ -1,4 +1,4 @@
-{% raw %}{% load staticfiles i18n compress sass_tags %}
+{% raw %}{% load staticfiles i18n compress sass_tags common %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,6 +68,8 @@
       </div>
     </div>
   </nav>
+
+  {% alert_messages messages %}
 
   {% block body_content %}{% endblock %}
 
