@@ -13,6 +13,24 @@
     font-weight: 400;
   }
 
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .account-social {
+    margin-top: 1rem;
+
+    .social-accounts {
+      margin: 1rem 0 2rem;
+      padding: 0;
+
+      li {
+        list-style: none
+      }
+    }
+  }
+
   .form-account {
     margin-top: 1rem;
 

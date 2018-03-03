@@ -9,21 +9,22 @@
 
   {% get_providers as socialaccount_providers %}
   {% if socialaccount_providers %}
-    <h2>Social accounts</h2>
-    <ul>
-      {% for provider in socialaccount_providers %}
-        <li>
-          <a class="btn btn-primary"
-             href="{% provider_login_url provider.id process='login' scope=scope auth_params=auth_params %}"
-             title="{{ provider.name }}">Login with {{ provider.name }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-    {% include "socialaccount/snippets/login_extra.html" %}
+    <div class="account-social">
+      <h2>Social accounts</h2>
+      <ul class="social-accounts">
+        {% for provider in socialaccount_providers %}
+          <li>
+            <a class="btn btn-primary"
+               href="{% provider_login_url provider.id process='login' scope=scope auth_params=auth_params %}"
+               title="{{ provider.name }}">Login with {{ provider.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      {% include "socialaccount/snippets/login_extra.html" %}
+    </div>
   {% endif %}
 
   <h2>Email address</h2>
-
   <form class="form-account form-login" method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
     {{ form.non_field_errors }}

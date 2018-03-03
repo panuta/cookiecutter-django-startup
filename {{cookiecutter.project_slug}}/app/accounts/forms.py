@@ -40,8 +40,14 @@ class EmailUserSignupForm(BaseSignupForm):
 
 
 class SocialUserSignupForm(SignupForm):
-    password1 = SetPasswordField(label=_('Password'), required=True)
-    display_name = forms.CharField(label=_('Display name'), max_length=100, required=True)
+    password1 = SetPasswordField(
+        label=_('Password'),
+        required=True,
+        help_text='We need you to set a password because we can help you recover your account')
+    display_name = forms.CharField(
+        label=_('Display name'),
+        max_length=100,
+        required=True)
 
     def __init__(self, *args, **kwargs):
         super(SocialUserSignupForm, self).__init__(*args, **kwargs)
@@ -54,7 +60,6 @@ class SocialUserSignupForm(SignupForm):
         self.fields['display_name'].initial = social_user_display_name(self.sociallogin.user)
 
     def save(self, request):
-
         # Check if user submitted different email we got from social network (Nasty user)
         if self.sociallogin.user.email and self.sociallogin.user.email != self.cleaned_data.get('email'):
             self.cleaned_data['email'] = self.sociallogin.user.email

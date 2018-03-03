@@ -73,12 +73,6 @@ class SocialUserSignupView(SignupView):
     form_class = SocialUserSignupForm
 
     def get_context_data(self, **kwargs):
-        context = super(SocialUserSignupView, self).get_context_data(**kwargs)
-
-        file_details = get_temp_profile_image_file_details(self.sociallogin)
-
-        temp_profile_image = {'name': file_details['name'], 'size': file_details['size'], 'url': file_details['url']} \
-            if file_details else {}
-
-        context.update({'temp_profile_image': temp_profile_image})
+        context = super().get_context_data(**kwargs)
+        context['socialuser'] = self.sociallogin.user
         return context
