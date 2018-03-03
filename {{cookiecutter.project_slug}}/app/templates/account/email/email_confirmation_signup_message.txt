@@ -1,0 +1,5 @@
+{% raw %}{% load account %}
+{% user_display user as user_display %}
+Welcome {{ user_display }}!
+You've just created an account at {{ current_site.name }}. To confirm your account, please open this link {{ activate_url }}
+{% endraw %}
