@@ -1,10 +1,28 @@
 {% raw %}{% extends "users/base_settings.html" %}
-{% load bootstrap4 %}
+{% load bootstrap4 socialaccount %}
 
 {% block html_title %}{{ block.super }} - Social accounts{% endblock %}
 {% block body_css_class %}{{ block.super }} page-account-settings-social{% endblock %}
 
 {% block settings_content %}
-
+  <ul class="providers">
+    {% for provider in enabled_providers %}
+      <li>
+        <div class="provider_name">{{ provider.name }}</div>
+        <div class="action">
+          {% if provider.account %}
+            <span class="status">Already connected</span>
+            <form action="." method="post">
+              {% csrf_token %}
+              <input type="hidden" name="account" value="{{ provider.account.id }}">
+              ( <button type="submit" class="remove">Remove</button> )
+            </form>
+          {% else %}
+            <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params next=request.path %}" class="btn btn-primary">Connect</a>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}
 {% endraw %}

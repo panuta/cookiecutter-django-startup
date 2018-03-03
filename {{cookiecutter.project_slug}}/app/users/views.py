@@ -1,3 +1,4 @@
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -6,6 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from allauth.account.forms import ChangePasswordForm
 from allauth.account.models import EmailAddress
 from allauth.account.utils import logout_on_password_change
+from allauth.socialaccount import providers
+from allauth.socialaccount.forms import DisconnectForm
+from allauth.socialaccount.models import SocialAccount
 
 from app.accounts.models import User
 from app.users.forms import UpdateProfileForm
@@ -68,7 +72,23 @@ def settings_profile(request):
 
 @login_required
 def settings_social(request):
-    return render(request, 'users/settings_social.html', {})
+    enabled_providers = providers.registry.get_list()
+
+    for provider in enabled_providers:
+        try:
+            provider.account = SocialAccount.objects.get(provider=provider.id, user=request.user)
+        except SocialAccount.DoesNotExist:
+            provider.account = None
+
+    if request.method == 'POST':
+        form = DisconnectForm(request.POST, request=request)
+        if form.is_valid():
+            form.save()
+            return redirect('users:settings_social')
+
+    return render(request, 'users/settings_social.html', {
+        'enabled_providers': enabled_providers,
+    })
 
 
 @login_required
