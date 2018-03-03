@@ -6,3 +6,9 @@ Heavily inspired by [Cookiecutter Django](https://github.com/pydanny/cookiecutte
 - Frontend: jQuery, Bootstrap 4, Font Awesome 5
 - User registration via [django-allauth](https://github.com/pennersr/django-allauth)
 - Docker Compose for development and deployment
+- Merge email account and social account
+
+## User Account
+
+- Always ask user to set password when sign up using Facebook
+- Merge account automatically if user already have existing account created with email
