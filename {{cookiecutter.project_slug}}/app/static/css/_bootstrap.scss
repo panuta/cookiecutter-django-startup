@@ -72,12 +72,15 @@
 
 .alert {
   border: none;
+  border-radius: 0;
+  box-shadow: 0 1px 0 white;
   color: #fff;
-  margin-bottom: 1rem;
-  padding-left: 20px;
+  font-size: 0.9rem;
+  margin: 0 0 1px;
+  padding: 0.5rem 1.25rem 0.5rem 20px;
 
   i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding-right: 7px;
     vertical-align: -1px;
   }
