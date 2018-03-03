@@ -57,7 +57,7 @@ class UserConfirmEmailView(ConfirmEmailView):
             EmailAddress.objects.filter(user=user).exclude(primary=True).delete()
 
             messages.success(self.request, _('Email is changed'))
-            return redirect('users:edit_profile')
+            return redirect('users:settings_profile')
 
         return redirect(settings.LOGIN_REDIRECT_URL)
 

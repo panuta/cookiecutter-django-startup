@@ -30,19 +30,19 @@ def settings_profile(request):
                 latest_changing_email_request = EmailAddress.objects.get(user=user, email=latest_changing_email)
             except EmailAddress.DoesNotExist:
                 messages.warning(request, _('There is no request to change to this email'))
-                return redirect('users:edit_profile')
+                return redirect('users:settings_profile')
 
             if submit_value == 'resend':
                 latest_changing_email_request.send_confirmation()
                 messages.success(request, _('Email is sent, please check your inbox'))
-                return redirect('users:edit_profile')
+                return redirect('users:settings_profile')
 
             if submit_value == 'cancel':
                 latest_changing_email_request.delete()
                 messages.success(request, _('Change request is cancelled'))
-                return redirect('users:edit_profile')
+                return redirect('users:settings_profile')
 
-            return redirect('users:edit_profile')
+            return redirect('users:settings_profile')
 
         else:
             form = UpdateProfileForm(user, request.POST)
@@ -55,7 +55,7 @@ def settings_profile(request):
                     EmailAddress.objects.add_email(request, user, email, confirm=True)
 
                 messages.success(request, _('Profile is updated'))
-                return redirect('users:edit_profile')
+                return redirect('users:settings_profile')
 
     else:
         form = UpdateProfileForm(user, initial={
@@ -82,7 +82,7 @@ def settings_password(request):
             logout_on_password_change(request, form.user)
 
             messages.success(request, _('Password is changed'))
-            return redirect('users:change_password')
+            return redirect('users:settings_password')
 
     else:
         form = ChangePasswordForm(request.user)
