@@ -1,0 +1,77 @@
+.page-account-settings {
+  header {
+    margin-bottom: 1rem;
+
+    h1 {
+      color: #222;
+      font-family: 'PT Sans', sans-serif;
+      font-weight: 700;
+      margin: 2rem 0 0;
+    }
+
+    h2 {
+      color: #555;
+      font-family: 'PT Sans', sans-serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+    }
+  }
+
+  .settings-nav {
+    margin-bottom: 1.5rem;
+
+    .nav-item {
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .nav-link {
+        color: $link-color;
+        padding: 0;
+
+        &:hover {
+          border-bottom: 3px solid #bbb;
+        }
+
+        &.active {
+          border-bottom: 3px solid #bbb;
+          color: #333;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  form {
+    .form-actions {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.page-account-settings-profile {
+  .has_change_email_request {
+    background-color: #FFD;
+    border: 1px solid #d0d073;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1rem 0;
+
+    p {
+      margin-bottom: 0.8rem;
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      color: $link-color;
+      font-weight: bold;
+      padding: 0;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

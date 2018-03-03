@@ -17,7 +17,7 @@ def public_profile(request, user_id):
 
 
 @login_required
-def edit_profile(request):
+def settings_profile(request):
     user = request.user
 
     if request.method == 'POST':
@@ -63,11 +63,16 @@ def edit_profile(request):
             'email': user.email,
         })
 
-    return render(request, 'users/edit_profile.html', {'form': form})
+    return render(request, 'users/settings_profile.html', {'form': form})
 
 
 @login_required
-def change_password(request):
+def settings_social(request):
+    return render(request, 'users/settings_social.html', {})
+
+
+@login_required
+def settings_password(request):
     if request.method == 'POST':
         form = ChangePasswordForm(request.user, request.POST)
         if form.is_valid():
@@ -82,4 +87,4 @@ def change_password(request):
     else:
         form = ChangePasswordForm(request.user)
 
-    return render(request, 'users/change_password.html', {'form': form})
+    return render(request, 'users/settings_password.html', {'form': form})

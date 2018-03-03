@@ -1,0 +1,27 @@
+{% raw %}{% extends "base.html" %}
+{% load common %}
+
+{% block html_title %}Account settings{% endblock %}
+{% block body_css_class %}page-account-settings{% endblock %}
+
+{% block body_content %}
+  <div class="container-fluid">
+    <header>
+      <h1>Account settings</h1>
+      <h2>{{ user.display_name }}</h2>
+    </header>
+    <ul class="settings-nav nav">
+      <li class="nav-item">
+        <a class="nav-link{% ifurlequal request.path 'users:settings_profile' %} active{% endifurlequal %}" href="{% url 'users:settings_profile' %}">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link{% ifurlequal request.path 'users:settings_social' %} active{% endifurlequal %}" href="{% url 'users:settings_social' %}">Social accounts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link{% ifurlequal request.path 'users:settings_password' %} active{% endifurlequal %}" href="{% url 'users:settings_password' %}">Password</a>
+      </li>
+    </ul>
+    {% block settings_content %}{% endblock %}
+  </div>
+{% endblock %}
+{% endraw %}

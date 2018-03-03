@@ -35,3 +35,26 @@ def alert_messages(messages):
                 message=message))
 
     return mark_safe(''.join(message_html_list))
+
+
+@register.tag(name="ifurlequal")
+def do_ifurlequal(parser, token):
+    tag_name, path, url_name = token.split_contents()
+    nodelist = parser.parse(('endifurlequal',))
+    parser.delete_first_token()
+    return IfURLEqualNode(path, url_name, nodelist)
+
+
+class IfURLEqualNode(template.Node):
+    def __init__(self, path, url_name, nodelist):
+        self.path = template.Variable(path)
+        self.url_name = url_name.strip(' \'\"')
+        self.nodelist = nodelist
+
+    def render(self, context):
+        path = self.path.resolve(context)
+
+        if path == reverse(self.url_name):
+            return self.nodelist.render(context)
+
+        return ''

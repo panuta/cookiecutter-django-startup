@@ -34,17 +34,25 @@
     .dropdown-menu {
       background-color: #492a5a;
       border-radius: 0;
+      padding: 0 0;
 
       .dropdown-item {
         color: #f5f1f7;
+        padding: 0.5rem 1.5rem 0.5rem 0.8rem;
 
         &:hover, &:focus {
           background-color: #2d1a37;
+        }
+
+        i {
+          color: #d2c0db;
+          margin-right: 2px;
         }
       }
 
       .dropdown-divider {
         border-top: 1px solid #7e5693;
+        margin: 0 0;
       }
     }
   }
@@ -63,22 +71,17 @@
       }
     }
 
-    .username {
-      color: #f5f1f7;
-      font-size: 0.95rem;
-      padding-right: 0.6rem;
-    }
+    .navbar-nav {
+      margin-right: 0.5rem;
 
-    .logout {
-      border-left: 1px solid #7e5693;
-      color: #baa1c8;
-
-      display: inline-block;
-      height: 45px;
-      padding: 0.6rem 0.8rem;
-
-      &:hover {
-        color: #fff;
+      .dropdown {
+        .nav-link {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 2px 0.3rem 0 0;
+          height: 43px;
+        }
       }
     }
   }

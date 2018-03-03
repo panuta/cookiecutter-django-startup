@@ -1,0 +1,32 @@
+{% raw %}{% extends "users/base_settings.html" %}
+{% load bootstrap4 %}
+
+{% block html_title %}{{ block.super }} - Update profile{% endblock %}
+{% block body_css_class %}{{ block.super }} page-account-settings-profile{% endblock %}
+
+{% block settings_content %}
+  <form method="post" action=".">
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="col-md-6">
+        {% bootstrap_field form.display_name %}
+        {% bootstrap_field form.email %}
+
+        {% if request.user.latest_changing_email_request %}
+          <div class="has_change_email_request">
+            <p>Check your email <b>{{ request.user.latest_changing_email_request.email }}</b> to confirm your new address. A confirmation email might take a few minutes to arrive. The change won’t take effect until confirmed.</p>
+            <p>Don't see an email, you can <button type="submit" name="submit" value="resend">resend email</button></p>
+            <p>If you want to cancel changing email, you can <button type="submit" name="submit" value="cancel">cancel request</button></p>
+          </div>
+          <input type="hidden" name="latest_changing_email" value="{{ request.user.latest_changing_email_request.email }}" />
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Confirm</button>
+    </div>
+  </form>
+{% endblock %}
+{% endraw %}
