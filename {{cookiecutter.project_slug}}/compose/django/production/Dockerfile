@@ -10,7 +10,7 @@ COPY ./requirements /requirements
 RUN pip install --no-cache-dir -r /requirements/production.txt \
     && rm -rf /requirements
 
-COPY ./compose/production/django/gunicorn.sh ./compose/production/django/entrypoint.sh /
+COPY ./compose/django/gunicorn.sh ./compose/django/entrypoint.sh /
 RUN sed -i 's/\r//' /entrypoint.sh \
     && sed -i 's/\r//' /gunicorn.sh \
     && chmod +x /entrypoint.sh \
