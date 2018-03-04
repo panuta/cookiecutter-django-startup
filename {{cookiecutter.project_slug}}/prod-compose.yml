@@ -13,7 +13,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - $HOME/postgresql_baks/:/backups
-    env_file: .env
+    env_file: ./env/prod.env
 
   django:
     restart: always
@@ -24,7 +24,7 @@ services:
       - postgres
     volumes:
       - .:/app
-    env_file: .env
+    env_file: ./env/prod.env
     command: /gunicorn.sh
 
   caddy:
@@ -40,4 +40,4 @@ services:
       - ./staticfiles:/var/www/static
       - ./app/media:/var/www/media
       - caddy:/root/.caddy
-    env_file: .env
+    env_file: ./env/prod.env

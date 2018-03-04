@@ -12,11 +12,6 @@ WEBSITE_DOMAIN = 'localhost:8000'
 WEBSITE_URL = 'http://' + WEBSITE_DOMAIN
 
 
-# SECRET CONFIGURATION
-# ------------------------------------------------------------------------------
-SECRET_KEY = env('DJANGO_SECRET_KEY', default='THIS_IS_DUMMY_SECRET_KEY')
-
-
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
 EMAIL_HOST = 'localhost'
@@ -61,13 +56,6 @@ DEBUG_TOOLBAR_CONFIG = {
 # Testing
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
-
-
-# AUTHENTICATION CONFIGURATION
-# ------------------------------------------------------------------------------
-
-SOCIALACCOUNT_FACEBOOK_CLIENT_ID = env('SOCIALACCOUNT_FACEBOOK_CLIENT_ID', default='')
-SOCIALACCOUNT_FACEBOOK_SECRET = env('SOCIALACCOUNT_FACEBOOK_SECRET', default='')
 
 
 # CUSTOM CONFIGURATION

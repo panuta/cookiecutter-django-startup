@@ -15,6 +15,7 @@ services:
       - USE_DOCKER=yes
     ports:
       - "8000:8000"
+    env_file: ./env/dev.env
     command: /start_dev.sh
 
   postgres:
@@ -26,5 +27,4 @@ services:
       - postgres_backup_dev:/backups
     ports:
       - "5433:5432"  # Expose port 5433 to use with Postgresql client on host machine
-    environment:
-      - POSTGRES_USER=startup
+    env_file: ./env/dev.env

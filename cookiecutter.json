@@ -4,7 +4,8 @@
     "domain_name": "example.com",
     "admin_name": "Administrator",
     "admin_email": "admin@example.com",
-    "create_super_user": "y",
+    "auto_create_super_user": "y",
+    "login_by_social_accounts": "y",
     "timezone": "UTC",
     "language_code": "en-us"
 }

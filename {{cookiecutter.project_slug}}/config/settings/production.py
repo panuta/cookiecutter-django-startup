@@ -1,14 +1,11 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import absolute_import, unicode_literals
-
 from .base import *
 
 
-# SECRET CONFIGURATION
+# WEBSITE
 # ------------------------------------------------------------------------------
 
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+WEBSITE_DOMAIN = '{{cookiecutter.domain_name}}'  # Do not include subdomain
+WEBSITE_URL = 'http://' + WEBSITE_DOMAIN
 
 
 # SECURITY CONFIGURATION
@@ -63,12 +60,6 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
     ('django.template.loaders.cached.Loader', [
         'django.template.loaders.filesystem.Loader', 'django.template.loaders.app_directories.Loader', ]),
 ]
-
-
-# DATABASE CONFIGURATION
-# ------------------------------------------------------------------------------
-DATABASES['default'] = env.db('DATABASE_URL')
-DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # CACHING

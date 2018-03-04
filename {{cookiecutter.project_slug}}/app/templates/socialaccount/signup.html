@@ -6,7 +6,7 @@
 {% block account_css_class %}page-account-welcome{% endblock %}
 
 {% block account_content %}
-  <h1>Welcome to Django Startup,</h1>
+  <h1>Welcome to {% endraw %}{{cookiecutter.project_name}}{% raw %},</h1>
   <div class="subtitle">Please fill out the form below to complete registration</div>
 
   <form method="post" action="." class="form-account">
