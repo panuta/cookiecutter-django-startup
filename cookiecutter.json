@@ -1,9 +1,10 @@
 {
     "project_name": "Django Startup",
     "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_') }}",
+    "domain_name": "example.com",
     "admin_name": "Administrator",
     "admin_email": "admin@example.com",
-    "domain_name": "example.com",
+    "create_super_user": "y",
     "timezone": "UTC",
     "language_code": "en-us"
 }

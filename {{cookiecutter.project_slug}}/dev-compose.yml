@@ -1,13 +1,30 @@
 version: '2'
 
+volumes:
+  postgres_data_dev: {}
+  postgres_backup_dev: {}
+
 services:
   django:
     build:
       context: .
-      dockerfile: ./compose/develop/django/Dockerfile
+      dockerfile: compose/django/develop/Dockerfile
     volumes:
       - .:/app
     environment:
       - USE_DOCKER=yes
     ports:
       - "8000:8000"
+    command: /start_dev.sh
+
+  postgres:
+    build:
+      context: .
+      dockerfile: compose/postgres/Dockerfile
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+      - postgres_backup_dev:/backups
+    ports:
+      - "5433:5432"  # Expose port 5433 to use with Postgresql client on host machine
+    environment:
+      - POSTGRES_USER=startup

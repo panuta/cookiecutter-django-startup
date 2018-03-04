@@ -12,3 +12,12 @@ Heavily inspired by [Cookiecutter Django](https://github.com/pydanny/cookiecutte
 
 - Always ask user to set password when sign up using Facebook
 - Merge account automatically if user already have existing account created with email
+
+## Usage
+
+- Install cookiecutter
+- Run cookiecutter
+- Docker compose build
+- Docker compose up
+- On production, move file .env to production server (without using git)
+

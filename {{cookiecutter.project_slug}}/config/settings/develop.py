@@ -62,11 +62,12 @@ DEBUG_TOOLBAR_CONFIG = {
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-#
-# # Facebook App
-# # ------------------------------------------------------------------------------
-# FACEBOOK_APP_ID = '225585191119533'
-# FACEBOOK_SECRET_KEY = '0be20b2acb2df9dd3d869834a429821b'
+
+# AUTHENTICATION CONFIGURATION
+# ------------------------------------------------------------------------------
+
+SOCIALACCOUNT_FACEBOOK_CLIENT_ID = env('SOCIALACCOUNT_FACEBOOK_CLIENT_ID', default='')
+SOCIALACCOUNT_FACEBOOK_SECRET = env('SOCIALACCOUNT_FACEBOOK_SECRET', default='')
 
 
 # CUSTOM CONFIGURATION

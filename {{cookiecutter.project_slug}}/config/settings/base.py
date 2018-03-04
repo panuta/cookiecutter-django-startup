@@ -56,10 +56,10 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'app.accounts',
+    'app.accounts.apps.AccountsConfig',
     'app.common',
-    'app.pages',
-    'app.users',
+    'app.pages.apps.PagesConfig',
+    'app.users.apps.UsersConfig',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -208,6 +208,7 @@ PASSWORD_HASHERS = [
 
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',

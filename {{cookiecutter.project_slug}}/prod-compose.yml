@@ -1,0 +1,43 @@
+version: '2'
+
+volumes:
+  postgres_data: {}
+  caddy: {}
+
+services:
+  postgres:
+    restart: always
+    build:
+      context: .
+      dockerfile: compose/postgres/Dockerfile
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - $HOME/postgresql_baks/:/backups
+    env_file: .env
+
+  django:
+    restart: always
+    build:
+      context: .
+      dockerfile: compose/django/production/Dockerfile
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    env_file: .env
+    command: /gunicorn.sh
+
+  caddy:
+    restart: always
+    build:
+      context: .
+      dockerfile: compose/caddy/Dockerfile
+    depends_on:
+      - django
+    ports:
+      - "0.0.0.0:80:80"
+    volumes:
+      - ./staticfiles:/var/www/static
+      - ./app/media:/var/www/media
+      - caddy:/root/.caddy
+    env_file: .env
