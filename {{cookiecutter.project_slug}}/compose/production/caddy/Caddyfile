@@ -1,0 +1,12 @@
+{$DOMAIN_NAME} {
+    root /var/www
+    proxy / django:5000 {
+        header_upstream Host {host}
+        header_upstream X-Real-IP {remote}
+        header_upstream X-Forwarded-Proto {scheme}
+        except /static /media
+    }
+    log /var/log/caddy.out.log
+    errors /var/log/caddy.error.log
+    gzip
+}
