@@ -1,6 +1,16 @@
-FROM python:3.6
+FROM python:3.6-alpine
 
 ENV PYTHONUNBUFFERED 1
+
+RUN apk update \
+  && apk add bash \
+  # psycopg2 dependencies
+  && apk add --virtual build-deps gcc python3-dev musl-dev \
+  && apk add postgresql-dev \
+  # Pillow dependencies
+  && apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev \
+  # CFFI dependencies
+  && apk add libffi-dev openssl-dev py-cffi
 
 RUN groupadd -r django \
     && useradd -r -g django django
@@ -10,15 +20,17 @@ COPY ./requirements /requirements
 RUN pip install --no-cache-dir -r /requirements/production.txt \
     && rm -rf /requirements
 
-COPY ./compose/django/gunicorn.sh ./compose/django/entrypoint.sh /
-RUN sed -i 's/\r//' /entrypoint.sh \
-    && sed -i 's/\r//' /gunicorn.sh \
-    && chmod +x /entrypoint.sh \
-    && chown django /entrypoint.sh \
-    && chmod +x /gunicorn.sh \
-    && chown django /gunicorn.sh
+COPY ./compose/django/gunicorn.sh /gunicorn.sh
+RUN sed -i 's/\r//' /gunicorn.sh
+RUN chmod +x /gunicorn.sh
+RUN chown django /gunicorn.sh
 
-VOLUME /app
+COPY ./compose/django/entrypoint.sh /entrypoint.sh
+RUN sed -i 's/\r//' /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+RUN chown django /entrypoint.sh
+
+COPY . /app
 
 RUN chown -R django /app
 
