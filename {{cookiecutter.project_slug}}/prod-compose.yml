@@ -22,6 +22,8 @@ services:
       dockerfile: compose/django/production/Dockerfile
     depends_on:
       - postgres
+    volumes:
+      - .:/app
     env_file: ./env/prod.env
     command: /gunicorn.sh
 
@@ -40,3 +42,6 @@ services:
       - ./app/media:/var/www/media
       - caddy:/root/.caddy
     env_file: ./env/prod.env
+
+  redis:
+    image: redis:latest
