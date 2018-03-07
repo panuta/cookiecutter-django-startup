@@ -15,13 +15,8 @@
 
   <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700" rel="stylesheet">
 
-  {% if debug %}
-    <link href="{% static 'libs/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'libs/fontawesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
-  {% else %}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
-  {% endif %}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 
   {% compress css %}
     <link href="{% sass_src 'css/styles.scss' %}" rel="stylesheet">
@@ -83,13 +78,8 @@
 
   {% block body_content %}{% endblock %}
 
-  {% if debug %}
-    <script src="{% static 'libs/jquery/jquery-3.3.1.js' %}"></script>
-    <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.js' %}"></script>
-  {% else %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-  {% endif %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
   {% compress js %}
     <script src="{% static 'js/csrf.js' %}"></script>
