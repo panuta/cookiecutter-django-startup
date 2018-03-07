@@ -2,7 +2,6 @@ version: '2'
 
 volumes:
   postgres_data: {}
-  caddy: {}
 
 services:
   postgres:
