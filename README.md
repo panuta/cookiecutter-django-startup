@@ -21,3 +21,9 @@ Heavily inspired by [Cookiecutter Django](https://github.com/pydanny/cookiecutte
 - Docker compose up
 - On production, move file .env to production server (without using git)
 
+## Deployment
+
+* Pull code
+* Build docker
+* migrate & createsuperuser
+* up -d
