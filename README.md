@@ -2,6 +2,8 @@
 
 Heavily inspired by [Cookiecutter Django](https://github.com/pydanny/cookiecutter-django), Cookiecutter Django Startup is a boilerplate for small/medium production-ready Django web application project. By including all functions necessary for regular web application (e.g. user registration, development and deployment setup), web application developers doesn't have to do repetitive tasks and focus primarily on what make your web application unique.
 
+![Screenshot](https://github.com/panuta/cookiecutter-django-startup/blob/master/docs/images/screenshot.png?raw=true)
+
 ## Features
 * Django 2.0
 * Python 3.6
