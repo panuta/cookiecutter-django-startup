@@ -1,4 +1,4 @@
-{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
+{% raw %}{{ $CurrentContainer := where $ "ID" .Docker.CurrentContainerID | first }}
 
 {{ define "upstream" }}
 	{{ if .Address }}
@@ -355,4 +355,4 @@ server {
 {{ end }}
 
 {{ end }}
-{{ end }}
+{{ end }}{% endraw %}
