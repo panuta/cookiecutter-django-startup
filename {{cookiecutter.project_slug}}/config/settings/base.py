@@ -21,11 +21,6 @@ APPS_DIR = ROOT_DIR.path('app')
 WEBSITE_NAME = '{{cookiecutter.project_name}}'
 
 
-# SECRET CONFIGURATION
-# ------------------------------------------------------------------------------
-SECRET_KEY = env('DJANGO_SECRET_KEY')
-
-
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
 DJANGO_APPS = (
@@ -104,14 +99,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-
-# DATABASE
-# ------------------------------------------------------------------------------
-DATABASES = {
-    'default': env.db('DATABASE_URL'),
-}
-DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # GENERAL CONFIGURATION

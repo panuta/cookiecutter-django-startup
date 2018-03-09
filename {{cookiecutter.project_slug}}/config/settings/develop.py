@@ -12,11 +12,29 @@ WEBSITE_DOMAIN = 'localhost:8000'
 WEBSITE_URL = 'http://' + WEBSITE_DOMAIN
 
 
+# SECRET CONFIGURATION
+# ------------------------------------------------------------------------------
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='THIS_IS_DUMMY_SECRET_KEY')
+
+
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
 EMAIL_HOST = 'localhost'
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
                     default='django.core.mail.backends.console.EmailBackend')
+
+
+# DATABASE
+# ------------------------------------------------------------------------------
+DATABASES = {
+    'default': env.db('DATABASE_URL',
+                      default='postgres://{postgres_user}:{postgres_password}@postgres:5432/{postgres_db}'.format(
+                          postgres_user=env('POSTGRES_USER'),
+                          postgres_password=env('POSTGRES_PASSWORD'),
+                          postgres_db=env('POSTGRES_USER'),
+                      )),
+}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # CACHING

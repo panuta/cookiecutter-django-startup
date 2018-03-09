@@ -8,6 +8,11 @@ WEBSITE_DOMAIN = '{{cookiecutter.domain_name}}'  # Do not include subdomain
 WEBSITE_URL = 'http://' + WEBSITE_DOMAIN
 
 
+# SECRET CONFIGURATION
+# ------------------------------------------------------------------------------
+SECRET_KEY = env('DJANGO_SECRET_KEY')
+
+
 # SECURITY CONFIGURATION
 # ------------------------------------------------------------------------------
 # See https://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.security
@@ -50,6 +55,14 @@ ANYMAIL = {
     'MAILGUN_SENDER_DOMAIN': env('MAILGUN_SENDER_DOMAIN')
 }
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+
+
+# DATABASE
+# ------------------------------------------------------------------------------
+DATABASES = {
+    'default': env.db('DATABASE_URL'),
+}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # TEMPLATE CONFIGURATION
