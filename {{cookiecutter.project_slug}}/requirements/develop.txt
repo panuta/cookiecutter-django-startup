@@ -2,3 +2,8 @@
 -r _base.txt
 
 django-debug-toolbar
+
+django-test-plus
+
+pytest-django
+pytest-sugar
